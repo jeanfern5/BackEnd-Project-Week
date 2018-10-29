@@ -1,0 +1,8 @@
+{
+  "name": "back-end-project-week",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/jeanfern5/back-end-project-week.git",
+  "author": "JeanetteFernandez <jeanfern555@gmail.com>",
+  "license": "MIT"
+}
