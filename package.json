@@ -5,10 +5,15 @@
   "repository": "https://github.com/jeanfern5/back-end-project-week.git",
   "author": "JeanetteFernandez <jeanfern555@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
   "dependencies": {
+    "cors": "^2.8.4",
     "express": "^4.16.4",
     "helmet": "^3.14.0",
     "knex": "^0.15.2",
+    "morgan": "^1.9.1",
     "sqlite3": "^4.0.3"
   },
   "devDependencies": {
