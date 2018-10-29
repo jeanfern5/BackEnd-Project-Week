@@ -60,4 +60,4 @@ Add Unit and Integration Tests.
 Super Duper Extra Credit Bonus Features
 Add a payment form integrating with Stripe that allows Users to buy a "Premium" version of Lambda Notes.
 Gate your favorite feature behind the premium paywall
-You will notice that this repository does not have any starter code. This is on purpose. You are to start from scratch using any files you have built throughout your time here at Lambda School as reference.
+You will notice that this repository does not have any starter code. This is on purpose, you are to start from scratch using any files you have built throughout your time here at Lambda School as reference.
