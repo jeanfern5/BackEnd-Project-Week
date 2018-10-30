@@ -12,10 +12,10 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', async (req, res) => {
-    try{
-        const {id} = req.params;
-        const note = await notes.getById(id);
+    const {id} = req.params;
+    const note = await notes.getById(id);
 
+    try{
         if(note) {
             res.status(200).json(note)
         } else {
@@ -27,9 +27,10 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-router.post('/', (req, res) => {
-        const {title, content} = req.body;
+router.post('/', async (req, res) => {
+    const {title, content} = await req.body;
 
+    try {
         if (!title.substr(1, 200)) {
             res.status(400).json({REQUIRED: `PLEASE INCLUDE A TITLE LESS THAN 200 CHARACTERS`});
         } else if (!content) {
@@ -40,8 +41,31 @@ router.post('/', (req, res) => {
                 .then(newNote => {
                     res.status(201).json(newNote);
                 })
-                .catch(err => res.status(500).json(err));
         }
+    }
+    catch(err){
+        res.status(500).json(err);
+    }
+});
+
+router.put('/:id', async (req, res) => {
+    const {id} = req.params;
+    const {title, content} = await req.body;
+
+    try {
+        notes
+            .update(id, {title, content})
+            .then(isUpdated => {
+                if (!isUpdated){
+                    res.status(400).json({ERROR: `NOTE WAS NOT ABLE TO UPDATE`});
+                } else {
+                    res.status(200).json(isUpdated);
+                }
+            })
+    }
+    catch(err) {
+        res.status(500).json(err);
+    }
 });
 
 module.exports = router;
