@@ -2,7 +2,7 @@ const db = require('../dbConfig.js');
 
 module.exports = {
 
-    get: function(id) {
+    get: function() {
         return db('notes');
     },
 
@@ -27,6 +27,6 @@ module.exports = {
     remove: function(id) {
         return db('notes')
             .where({id})
-            .del()
+            .del();
     }
 };
