@@ -12,7 +12,7 @@ module.exports = {
             .first();
     },
 
-    insert: function(id) {
+    insert: function(note) {
         return db('notes')
             .insert(note)
             .into('notes');
@@ -29,4 +29,4 @@ module.exports = {
             .where({id})
             .del();
     }
-};
+}

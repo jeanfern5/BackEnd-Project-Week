@@ -27,4 +27,21 @@ router.get('/:id', async (req, res) => {
     }
 });
 
+router.post('/', (req, res) => {
+        const {title, content} = req.body;
+
+        if (!title.substr(1, 200)) {
+            res.status(400).json({REQUIRED: `PLEASE INCLUDE A TITLE LESS THAN 200 CHARACTERS`});
+        } else if (!content) {
+            res.status(400).json({REQUIRED: `PLEASE INCLUDE CONTENT`})
+        }else {
+            notes 
+                .insert({title, content})
+                .then(newNote => {
+                    res.status(201).json(newNote);
+                })
+                .catch(err => res.status(500).json(err));
+        }
+});
+
 module.exports = router;
