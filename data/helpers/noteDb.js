@@ -15,7 +15,6 @@ module.exports = {
     insert: function(note) {
         return db('notes')
             .insert(note)
-            .into('notes');
     },
 
     update: function(id, changes) {

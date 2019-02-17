@@ -26,21 +26,31 @@ router.get('/:id', async (req, res) => {
     catch(err) {res.status(500).json(err)}
 });
 
-router.post('/',  (req, res) => {
-    const {title, content} =  req.body;
-    console.log('&&&&&&', title, content)
-     
-    notes 
-        .insert({title, content})
-        .then(newNote => {
-            res.status(201).json(newNote);
-        })
-        .catch(err => res.status(500).json(err));
+router.post('/', async (req, res) => {
+    const {title, content} = await req.body;
+
+    // try {
+    //     if (!title.substr(1, 200)) {
+    //         res.status(411).json({REQUIRED: `PLEASE INCLUDE A TITLE LESS THAN 200 CHARACTERS`});
+    //     } else if (!content) {
+    //         res.status(411).json({REQUIRED: `PLEASE INCLUDE CONTENT`})
+    //     }else {
+            notes 
+                .insert({title, content})
+                .then(newNote => {
+                    res.status(201).json(newNote);
+                })
+                .catch(err => res.status(500).json(err))
+    //     }
+    // }
+
+    // catch(err){res.status(500).json(err)}
 });
 
 router.put('/:id', async (req, res) => {
     const {id} = req.params;
-    const {title, content} = await req.body;
+    const response = await req.body;
+    console.log(response)
 
     try {
         if (!title.substr(1, 200)) {
